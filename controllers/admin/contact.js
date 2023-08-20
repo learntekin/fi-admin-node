@@ -98,7 +98,7 @@ Router.post('/addUpdateContact' ,function(req,res) {
             if(err) {
                 res.send(response);
             } else {
-                  const faqData = {
+                  const contactData = {
                     id         : result1._id,
                     name   : result1.name,
                     email     : result1.email,
@@ -108,7 +108,7 @@ Router.post('/addUpdateContact' ,function(req,res) {
                   }
                   response.status  = 1;
                   response.message = 'Contact updated successfully';
-                  response.data    = faqData;
+                  response.data    = contactData;
                 res.send(response);
             }
         });
