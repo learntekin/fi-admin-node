@@ -5,14 +5,12 @@ const app = express();
 const mongoose = require('mongoose');
 const dbConfig = require('./config/db.js');
 const expressValidator = require('express-validator');
-app.use(expressValidator());
+app.use(expressValidator())
+app.use(cors())
 
-app.use(cors());
-
-const DBURL = dbConfig.url;
-const PORT = dbConfig.port;
+const DBURL         = dbConfig.url;
+const PORT          = dbConfig.port;
 const LOCAL_ADDRESS = dbConfig.hostname;
-
 // Connecting to the database
 mongoose.connect(DBURL, {
     useNewUrlParser: true,
@@ -28,7 +26,7 @@ mongoose.connect(DBURL, {
 
 app.use('/uploads', express.static('uploads'));
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false, useUnifiedTopology: true }))
 // parse application/json
 app.use(bodyParser.json());
 
